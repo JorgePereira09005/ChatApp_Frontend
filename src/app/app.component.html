@@ -11,34 +11,32 @@
 
   <ul class="container">
 
-    <div *ngIf="isLoggedIn">
+    <div *ngIf="isLoggedIn; else elseBlock">
       <li>
         <a routerLink="/dashboard"><i>ChatApp - {{this.username}}</i></a>
 
       </li>
 
-      <!-- <li><a href="">Friends</a></li> -->
-
-      <!-- <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Friends
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div> -->
-
       <li><a href="">Posts</a></li>
-      <li><a href="">Search</a></li>
+      <li><a [routerLink]="" fragment="search">Search user</a></li>
 
       <li>
         <a style="color:burlywood" href class="nav-link" (click)="logout()">Logout</a>
       </li>
 
     </div>
+
+    <ng-template #elseBlock>
+      <div>
+        <li>
+          <a routerLink="/"><i>ChatApp </i></a>
+        </li>
+        <li>
+          <a routerLink="/signin"><i>Signin </i></a>
+        </li>
+        <li><a [routerLink]="" fragment="search">Search user</a></li>
+      </div>
+    </ng-template>
 
   </ul>
 
@@ -50,9 +48,9 @@
   <div class="container medium "> -->
 
 <article id="contact" class="wrapper style4">
-  <div class="container medium">
+  <div class="container medium" id="search" >
 
-    <header>
+    <header >
       <h2>Search for a user</h2>
     </header>
 
@@ -60,41 +58,18 @@
       <div class="col-12">
 
         <div class="form-header">
-          <input #myInput type="text" placeholder="Search for user..." class="au-input au-input-xl" />
-          <button class="au btn-primary btn-sm">
+          <input #myInput type="text" placeholder="Search for user..." 
+          class="au-input au-input-xl" (keyup.enter)="searchForUser(myInput.value)"/>
+          <button class="au btn-primary btn-sm" (click)="searchForUser(myInput.value)">
             Search
           </button>
         </div>
-
-        <!-- <input #myInput type="text" placeholder="Search for user..." class="au-input au-input-xl"/>
-
-        <button class="btn btn-primary btn-sm" style="scale: 75%;">
-          Search
-        </button> -->
-
-        <!-- <input #myInput type="text" placeholder="Search for user..." class="au-input au-input-xl"
-          (keyup.enter)="doSearch(myInput.value)" />
-
-        <button (click)="doSearch(myInput.value)" class="btn btn-primary btn-sm" style="scale: 75%;">
-          Search
-        </button> -->
 
         <hr />
         <h3>Check my Github portfolio!</h3>
         <ul class="social">
           <li><a href="https://github.com/JorgePereira09005" class="icon brands fa-github"><span
                 class="label">Github</span></a></li>
-          <!--
-        <li><a href="#" class="icon solid fa-rss"><span>RSS</span></a></li>
-        <li><a href="#" class="icon brands fa-instagram"><span>Instagram</span></a></li>
-        <li><a href="#" class="icon brands fa-foursquare"><span>Foursquare</span></a></li>
-        <li><a href="#" class="icon brands fa-skype"><span>Skype</span></a></li>
-        <li><a href="#" class="icon brands fa-soundcloud"><span>Soundcloud</span></a></li>
-        <li><a href="#" class="icon brands fa-youtube"><span>YouTube</span></a></li>
-        <li><a href="#" class="icon brands fa-blogger"><span>Blogger</span></a></li>
-        <li><a href="#" class="icon brands fa-flickr"><span>Flickr</span></a></li>
-        <li><a href="#" class="icon brands fa-vimeo"><span>Vimeo</span></a></li>
-        -->
         </ul>
         <hr />
       </div>

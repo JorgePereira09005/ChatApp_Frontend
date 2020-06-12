@@ -73,6 +73,14 @@
           <b>You have pending friend requests!</b>
         </div>
 
+        <div id="friendAcceptedAlert" class="alert alert-primary" role="alert" style="scale: 80%; display: none;">
+          <b>Friend request accepted!</b>
+        </div>
+
+        <div id="friendDeclinedAlert" class="alert alert-danger" role="alert" style="scale: 80%; display: none;">
+          <b>Friend request declined!</b>
+        </div>
+
       </div>
 
       <div class="col-5 col-12-medium">
@@ -89,14 +97,14 @@
 
               <ng-container *ngFor="let request of this.pendingRequests">
 
-                <div class="row">
-                  <p class="dropdown-item">From: {{request.requester.username}}
-                    TO: {{request.requested_to.username}}</p>
-                </div>
+                  <div class="row">
+                    <p class="dropdown-item">From: {{request.requester.username}}</p>
+                  </div>
 
-                <div class="row">
-                  <a class="col" style="cursor:pointer"><b>Accept</b></a>
-                  <a class="col" style="cursor:pointer"><b>Decline</b></a>
+                  <div class="row">
+                    <a class="col-md" (click)="acceptFriendRequest(request)" style="cursor:pointer"><b>Accept</b></a>
+                    <a class="col-md" (click)="declineFriendRequest(request)" style="cursor:pointer"><b>Decline</b></a>
+
                 </div>
 
               </ng-container>
@@ -159,47 +167,45 @@
     <br>
 
 
-      <div *ngFor="let post of this.posts">
+    <div *ngFor="let post of this.posts">
 
-        <div class="media ">
+      <div class="media ">
 
-          <img src={{user.profilePic}} class="" style="width: 100px;" class="mr-3" alt="...">
+        <img src={{user.profilePic}} class="" style="width: 100px;" class="mr-3" alt="...">
 
-          <div class="media-body ">
+        <div class="media-body ">
 
-            <h4 class="mt-0 wrap"><b> {{post.id}} - Posted on {{post.datePost}}</b></h4>
-            <p class="wrap">{{post.content}}</p>
+          <h4 class="mt-0 wrap"><b> {{post.id}} - Posted on {{post.datePost}}</b></h4>
+          <p class="wrap">{{post.content}}</p>
 
-            <button (click)="showReplyBox(post.id)" class="btn btn-secondary btn-sm">
-              Reply
-            </button>
+          <button (click)="showReplyBox(post.id)" class="btn btn-secondary btn-sm">
+            Reply
+          </button>
 
-            <div *ngIf="postsShowing.has(post.id)">
+          <div *ngIf="postsShowing.has(post.id)">
 
-              <textarea #reply placeholder="Type a response!"></textarea>
+            <textarea #reply placeholder="Type a response!"></textarea>
 
-              <a style="cursor:pointer" (click)="sendReply(reply, post.id)">
-                <b>Send reply</b>
-              </a>
+            <a style="cursor:pointer" (click)="sendReply(reply, post.id)">
+              <b>Send reply</b>
+            </a>
 
-            </div>
+          </div>
 
-            <!-- <input type="button" name="answer" value="Show Div" onclick="showDiv()" /> -->
+          <!-- <input type="button" name="answer" value="Show Div" onclick="showDiv()" /> -->
 
-            <div *ngFor="let child of post.childrenPosts">
-              <div class="media mt-3">
+          <div *ngFor="let child of post.childrenPosts">
+            <div class="media mt-3">
 
-                <!-- <a class="mr-3" href="#">
+              <!-- <a class="mr-3" href="#">
               <img src="..." class="mr-3" alt="...">
             </a> -->
 
-                <img src={{user.profilePic}} class="img-fluid" style="width: 100px;" class="mr-3" alt="...">
+              <img src={{child.postedBy.profilePic}} class="img-fluid" style="width: 100px;" class="mr-3" alt="...">
 
-                <div class="media-body">
-                  <h4 class="mt-0 wrap">{{child.id}} - Posted on {{child.datePost}} by {{child.postedBy.username}}</h4>
-                  <p class="wrap">{{child.content}}</p>
-                </div>
-
+              <div class="media-body">
+                <h4 class="mt-0 wrap">{{child.id}} - Posted on {{child.datePost}} by {{child.postedBy.username}}</h4>
+                <p class="wrap">{{child.content}}</p>
               </div>
 
             </div>
@@ -209,6 +215,8 @@
         </div>
 
       </div>
+
+    </div>
 
     <br>
 

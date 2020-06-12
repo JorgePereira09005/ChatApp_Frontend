@@ -5,18 +5,22 @@ import { HomeComponent } from './_components/home/home.component';
 import { SignupComponent } from './_components/signup/signup.component';
 import { SigninComponent } from './_components/signin/signin.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
+import { UserComponent } from './_components/user/user.component';
 
 
 const routes: Routes = [
+  { path: 'user/:username', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'signin', component: SigninComponent},
-  { path: 'signup', component: SignupComponent},
-  { path: 'home', component: HomeComponent},
-  { path: '', component: HomeComponent}
+  { path: 'signin', component: SigninComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

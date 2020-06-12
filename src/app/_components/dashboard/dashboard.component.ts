@@ -106,4 +106,52 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  acceptFriendRequest(friendRequest: FriendRequest) {
+    this.backendService.acceptFriendRequest(friendRequest).subscribe(
+      data => {
+
+        //remove accepted friend request from the list of pending requests and add it to the list of friends
+        let index: number = 0;
+        for (index; index < this.pendingRequests.length; index++) {
+          if (this.pendingRequests[index].id == friendRequest.id) {
+            this.pendingRequests.splice(index, 1);
+          }
+        }
+
+        this.friends.add(friendRequest.requester);
+
+        //display alert message to confirm friend has been added
+        document.getElementById('friendAcceptedAlert').style.display = "block";
+
+        setTimeout( () => {
+          document.getElementById('friendAcceptedAlert').style.display = "none";
+        }, 3000);
+
+      }
+    )
+  }
+
+  declineFriendRequest(friendRequest: FriendRequest) {
+    this.backendService.declineFriendRequest(friendRequest).subscribe(
+      data => {
+
+        //remove declined friend request from the list of pending requests 
+        let index: number = 0;
+        for (index; index < this.pendingRequests.length; index++) {
+          if (this.pendingRequests[index].id == friendRequest.id) {
+            this.pendingRequests.splice(index, 1);
+          }
+        }
+
+        //display alert message to confirm friend has been added
+        document.getElementById('friendDeclinedAlert').style.display = "block";
+
+        setTimeout( () => {
+          document.getElementById('friendDeclinedAlert').style.display = "none";
+        }, 3000);
+
+      }
+    )
+  }
+
 }

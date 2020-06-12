@@ -11,6 +11,7 @@ import { SigninComponent } from './_components/signin/signin.component';
 
 import { authInterceptorProviders } from '../_helpers/auth.interceptor';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
+import { UserComponent } from './_components/user/user.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DashboardComponent } from './_components/dashboard/dashboard.component'
     HomeComponent,
     SignupComponent,
     SigninComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

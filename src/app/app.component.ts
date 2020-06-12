@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorageService.getToken()) {
@@ -31,6 +33,17 @@ export class AppComponent implements OnInit {
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  searchForUser(username: string) {
+    /* this.router.navigateByUrl(`/user/${username}`); */
+
+    this.router.navigate([`/user/${username}`])
+      .then(() => {
+        
+        window.location.reload();
+        
+      });
   }
 
 }
