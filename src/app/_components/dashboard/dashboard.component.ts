@@ -12,10 +12,12 @@ import { User } from 'src/app/_entities/user';
 })
 export class DashboardComponent implements OnInit {
 
-  user: any;
+  user: User;
   posts: Post[] = [];
 
   friends = new Set<User>();
+
+  acceptedRequests: FriendRequest[] = [];
   pendingRequests: FriendRequest[] = [];
   requestsSent: FriendRequest[] = [];
 
@@ -51,6 +53,7 @@ export class DashboardComponent implements OnInit {
           //add friendrequest.requested_to user to the friends list (since we know the request was made from the logged in user to requested_to user and if it's accepted, the requested_to user is a friend).
           //Otherwise, add the requester to the friends list
           if (friendrequest.accepted) {
+            this.acceptedRequests.push(friendrequest);
             friendrequest.requester.username == this.user.username ? this.friends.add(friendrequest.requested_to) : this.friends.add(friendrequest.requester);
           }
           else if (friendrequest.requester.username != this.user.username) {
@@ -152,6 +155,28 @@ export class DashboardComponent implements OnInit {
 
       }
     )
+  }
+
+  removeFriend(friend: User) {
+
+    const friendRequest = new FriendRequest();
+    friendRequest.requested_to = this.user;
+    friendRequest.requestedToId = this.user.id;
+    friendRequest.requester = friend;
+    friendRequest.requesterId = friend.id;
+    friendRequest.accepted = true;
+
+    this.backendService.unfriendUser(friendRequest).subscribe(
+      data => {
+        document.getElementById('userUnfriended').style.display = "block";
+
+        setTimeout( () => {
+          document.getElementById('userUnfriended').style.display = "none";
+        }, 3000);
+      }
+    )
+
+
   }
 
 }

@@ -42,4 +42,8 @@ export class BackendRequestService {
   sendFriendRequest(friendRequest: FriendRequest): Observable<string> {
     return this.httpClient.post(API_URL + 'friendrequests', friendRequest, {responseType: 'text'});
   }
+
+  unfriendUser(friendRequest: FriendRequest): Observable<string> {
+    return this.httpClient.post(API_URL + `friendrequests/unfriend`, friendRequest, {responseType: 'text'});
+  }
 }
