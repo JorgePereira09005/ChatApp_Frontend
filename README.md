@@ -14,4 +14,16 @@ Make sure ports 4200 and 8080 are not being used before compiling the files.
 
 ![image](https://user-images.githubusercontent.com/61985975/84664069-e6d34180-af15-11ea-8371-b062821efddf.png)
 
+## Creating new account
 
+![image](https://user-images.githubusercontent.com/61985975/84664302-3dd91680-af16-11ea-93b2-8cf2f6f75a87.png)
+
+
+## User dashboard
+
+![image](https://user-images.githubusercontent.com/61985975/84665546-dc19ac00-af17-11ea-85d7-2ef2562681b3.png)
+
+
+## Viewing another user's profile
+
+![image](https://user-images.githubusercontent.com/61985975/84665632-f6538a00-af17-11ea-9854-624f4d86b3f3.png)
