@@ -4,7 +4,14 @@ This app is a compact social network that allows for real-time chat between user
 
 Employs Spring Boot and MySQL for the backend and Angular 9 in the front end, which communicate via a set of REST endpoints. 
 
-The app supports creating new user accounts, logging in with said account and creating posts or replying to posts made by another user. Exchanging friend requests is also supported. Includes a global real-time chat that can be used by any registered user.
+The app supports creating new user accounts, logging in with said account and creating posts or replying to posts made by another user. Exchanging friend requests is also supported. Includes a global real-time chat that can be used by any registered user, which makes user of StompJS and websockets.
+
+The structure of the site is based on the Miniport template, available here https://html5up.net/uploads/demos/miniport/ . Bootstrap was used to edit and extend the base template.
+
+TODO list:
+-Dockerize the app and host in on AWS;
+-Implement private chat between two friends.
+
 
 In order to run this application, first run the "chat-app-schema.sql" script in the "src/main/resources" folder contained within the Spring Boot backend files (which is contained in a another repository). 
 Run the Spring Boot files using your IDE of choice and then run the frontend files by using the "ng serve" command. Make sure you have the Angular CLI and Node.js installed. Visit http://localhost:4200/ to view the site.
