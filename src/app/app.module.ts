@@ -12,7 +12,10 @@ import { SigninComponent } from './_components/signin/signin.component';
 import { authInterceptorProviders } from '../_helpers/auth.interceptor';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { UserComponent } from './_components/user/user.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SocketService } from './_services/socket.service';
+import { ChatComponent } from './_components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +24,18 @@ import { UserComponent } from './_components/user/user.component';
     SignupComponent,
     SigninComponent,
     DashboardComponent,
-    UserComponent
+    UserComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ToastrModule.forRoot({ timeOut: 3000 }),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

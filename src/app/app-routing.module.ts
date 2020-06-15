@@ -6,9 +6,10 @@ import { SignupComponent } from './_components/signup/signup.component';
 import { SigninComponent } from './_components/signin/signin.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { UserComponent } from './_components/user/user.component';
-
+import { ChatComponent } from './_components/chat/chat.component';
 
 const routes: Routes = [
+  { path: 'chat', component: ChatComponent, pathMatch: 'full', canActivate: [AuthGuard]  },
   { path: 'user/:username', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'signin', component: SigninComponent },
