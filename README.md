@@ -1,27 +1,17 @@
 # ChatApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This app is a compact social network that allows for real-time chat between users and the exchange of friend requests. Also allows for users to post comments and to reply to comments. 
 
-## Development server
+Employs Spring Boot and MySQL for the backend and Angular 9 in the front end, which communicate via a set of REST endpoints. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The app supports creating a new user account, login in with said account and creating posts or replying to posts made by another user. Exchanging friend requests is also supported. Includes a global real-time chat that can be used by any registered user.
 
-## Code scaffolding
+In order to run this application, first run the "chat-app-schema.sql" script in the "src/main/resources" folder contained within the Spring Boot backend files (which is contained in a another repository). 
+Run the Spring Boot files using your IDE of choice and then run the frontend files by using the "ng serve" command. Make sure you have the Angular CLI and Node.js installed. Visit http://localhost:4200/ to view the site.
+Make sure ports 4200 and 8080 are not being used before compiling the files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Home page
 
-## Build
+![image](https://user-images.githubusercontent.com/61985975/84664069-e6d34180-af15-11ea-8371-b062821efddf.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
