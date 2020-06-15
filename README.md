@@ -27,3 +27,9 @@ Make sure ports 4200 and 8080 are not being used before compiling the files.
 ## Viewing another user's profile
 
 ![image](https://user-images.githubusercontent.com/61985975/84665632-f6538a00-af17-11ea-9854-624f4d86b3f3.png)
+
+
+## Global Real-time chat
+
+
+![image](https://user-images.githubusercontent.com/61985975/84665909-4e8a8c00-af18-11ea-8d13-c5f1f4b71368.png)
