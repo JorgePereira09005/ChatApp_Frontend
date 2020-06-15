@@ -4,7 +4,7 @@ This app is a compact social network that allows for real-time chat between user
 
 Employs Spring Boot and MySQL for the backend and Angular 9 in the front end, which communicate via a set of REST endpoints. 
 
-The app supports creating new user accounts, logging in with said account and creating posts or replying to posts made by another user. Exchanging friend requests is also supported. Includes a global real-time chat that can be used by any registered user, which makes user of StompJS and websockets.
+The app supports creating new user accounts, logging in with said account and creating posts or replying to posts made by another user. Exchanging friend requests is also supported. Includes a global real-time chat that can be used by any registered user, which makes use of StompJS and websockets.
 
 The structure of the site is based on the Miniport template, available here https://html5up.net/uploads/demos/miniport/ . Bootstrap was used to edit and extend the base template.
 
